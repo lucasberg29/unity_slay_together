@@ -18,7 +18,7 @@
                     "name": "Slash",
                     "type": "Button",
                     "id": "dc84c93e-1332-4e14-baf0-cad3200cca20",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -27,7 +27,7 @@
                     "name": "Special",
                     "type": "Button",
                     "id": "20438786-f6fc-4f81-b84e-0814a493f726",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -36,7 +36,7 @@
                     "name": "Restart",
                     "type": "Button",
                     "id": "32121f3f-dd79-43ab-95f8-52ff3719a14d",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

@@ -6,17 +6,14 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField]
+    private int enemyHealth = 100;
+    private int enemySpeed = 1;
+
     NavMeshAgent enemyAgent;
 
     public RectTransform healthBarRect;
 
-    [SerializeField]
-    private int enemyHealth = 100;
-
-    [SerializeField]
-    private int enemySpeed = 1;
-
-    [SerializeField]
     private GameObject playerTargeted;
 
     public float distanceToTarget = 0.0f;
@@ -41,35 +38,38 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        AdjustRotation();
+        UpdateTransform();
 
         if (hasTarget && playerTargeted is not null)
         {
             if (GameObject.FindGameObjectWithTag("Player") is not null)
             {
-                //playerTargeted = GameObject.FindGameObjectWithTag("Player");
                 ChasePlayer(playerTargeted.transform);
             }
         }
+    }
+
+    private void UpdateTransform()
+    {
+        AdjustRotation();
     }
 
     public void SetNewTarget( GameObject player)
     {
         playerTargeted = player;
     }
-    
 
     void ChasePlayer( Transform player )
     {
-
         bool isStriking = enemyAnimator.GetBool("IsStriking");
 
         if (!isStriking)
         {
             enemyAgent.SetDestination(player.position);
             transform.LookAt(new Vector3(player.position.x, 0.0f, player.position.z));
-        }
 
+            enemyAgent.speed = enemySpeed;
+        }
 
         if ((player.position - transform.position).magnitude < distanceToTarget)
         {
@@ -87,7 +87,6 @@ public class Enemy : MonoBehaviour
         enemyHealth = enemyHealth - damage;
 
         healthBar.GetComponent<Slider>().value = enemyHealth / 100.0f;
-        //healthBar.value = enemyHealth / 100;
 
         if (enemyHealth <= 0)
         {
