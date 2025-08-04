@@ -1,41 +1,42 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class SinglePlayer : MonoBehaviour
 {
-    private Hero playerHero;
-
-    private PlayerContoller playerControls;
-    private PlayerInput player;
+    private ControllerHandler controllerHandler;
+    private Hero hero;
 
     private void Awake()
     {
-        playerControls = new @PlayerContoller();
-        player = GetComponent<PlayerInput>();
+        controllerHandler = GetComponent<ControllerHandler>();
+        hero = GameObject.FindGameObjectWithTag("Hero").GetComponent<Hero>();
     }
-    // Start is called before the first frame update
+
     void Start()
-    {
-
-    }
-
-    public void RestartLevel()
-    {
-
-    }
-
-    public void RegenerateSpecial()
     {
 
     }
 
     void Update()
     {
-
+        UpdateMovement();
+        UpdateActions();
     }
 
-    private void MovePlayer(Vector3 newDirection)
+    private void UpdateMovement()
     {
+        if (controllerHandler.leftStick != Vector2.zero)
+        {
+            hero.MovePlayer(controllerHandler.leftStick);
+        }
+    }
 
+    private void UpdateActions()
+    {
+        if (controllerHandler.westButton == sTButton.OnPressed)
+        {
+            hero.Slash();
+        }
     }
 }
