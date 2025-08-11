@@ -7,9 +7,6 @@ public class PlayerDestination : MonoBehaviour
 {
     public NavMeshAgent player;
 
-    
-
-
     // Start is called before the first frame update
     void Start()
     {

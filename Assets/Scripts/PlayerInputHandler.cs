@@ -15,7 +15,6 @@ public class PlayerInputHandler : MonoBehaviour
 
     public GameObject canvas;
 
-
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -31,7 +30,6 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnMove(CallbackContext context)
     {
-        //Debug.Log("Keep moving!");
         mover.SetInputVector(context.ReadValue<Vector2>());
     }
 

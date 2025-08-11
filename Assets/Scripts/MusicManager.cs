@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour
 {
+    public bool isActive = false;
+
     private AudioSource audioSource;
 
     public static MusicManager _instance;
@@ -24,7 +26,6 @@ public class MusicManager : MonoBehaviour
     {
         audioSource = gameObject.GetComponent<AudioSource>();
 
-        PlaySong("GreenSleeves");
 
         if (_instance != null && _instance != this)
         {
@@ -53,11 +54,25 @@ public class MusicManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (isActive)
+        {
+            PlaySong("GreenSleeves");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isActive)
+        {
+            PlaySong("GreenSleeves");
+        }
+        else
+        {
+            PauseSong();
+        }
+
         audioSource.volume = GameManager._instance.GetVolume();
     }
 
@@ -76,14 +91,12 @@ public class MusicManager : MonoBehaviour
     public void PlaySong(string songTag)
     {
         audioSource.clip = songs[0];
-
         audioSource.volume = GameManager._instance.GetVolume();
-
         audioSource.Play();
-
-        Debug.Log("Playing Greensleeves");
-
-        //GetComponent<AudioSource>().Play();
     }
 
+    public void PauseSong()
+    {
+        audioSource.Stop();
+    }
 }

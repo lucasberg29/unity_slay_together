@@ -8,13 +8,11 @@ public class SettingsManager : MonoBehaviour
 {
     public Slider volumeSlider;
 
-    // Start is called before the first frame update
     void Start()
     {
         volumeSlider.value = GameManager._instance.GetVolume();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if ( volumeSlider.value != GameManager._instance.GetVolume())
