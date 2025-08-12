@@ -9,13 +9,24 @@ public class ControllerHandler : MonoBehaviour
 
     public Vector2 leftStick;
 
+    // A, B, X, Y
     public sTButton southButton;
     public sTButton eastButton;
     public sTButton westButton;
     public sTButton northButton;
 
+    // Start, Select
     public sTButton startButton;
     public sTButton selectButton;
+
+    // Bumpers, Trigger
+    public sTButton leftBumperButton;
+    public sTButton leftTriggerButton;
+    public float leftTriggerDepth = 0.0f;
+
+    public sTButton rightBumperButton;
+    public sTButton rightTriggerButton;
+    public float rightTriggerDepth = 0.0f;
 
     private InputAction leftStickIA;
 
@@ -27,24 +38,32 @@ public class ControllerHandler : MonoBehaviour
     private InputAction startButtonIA;
     private InputAction selectButtonIA;
 
+    private InputAction leftBumperButtonIA;
+    private InputAction leftTriggerButtonIA;
+
+    private InputAction rightBumperButtonIA;
+    private InputAction rightTriggerButtonIA;
+
     void Start()
     {
         playerInput = GetComponent<PlayerInput>();
 
         leftStickIA = playerInput.actions["Movement"];
+
         westButtonIA = playerInput.actions["Slash"];
         northButtonIA = playerInput.actions["Special"];
+
+        leftBumperButtonIA = playerInput.actions["LeftBumper"];
+        leftTriggerButtonIA = playerInput.actions["LeftTrigger"];
+
+        rightBumperButtonIA = playerInput.actions["RightBumper"];
+        rightTriggerButtonIA = playerInput.actions["RightTrigger"];
     }
 
     void Update()
     {
         UpdateMovement();
-
         UpdateButtons();
-
-
-
-
     }
     private void UpdateMovement()
     {
@@ -55,6 +74,13 @@ public class ControllerHandler : MonoBehaviour
     {
         UpdateButton(westButtonIA, ref westButton);
         UpdateButton(northButtonIA, ref northButton);
+        UpdateButton(leftBumperButtonIA, ref leftBumperButton);
+        UpdateButton(leftTriggerButtonIA, ref leftTriggerButton);
+        UpdateButton(rightBumperButtonIA, ref rightBumperButton);
+        UpdateButton(rightTriggerButtonIA, ref rightTriggerButton);
+
+        leftTriggerDepth = leftTriggerButtonIA.ReadValue<float>();
+        rightTriggerDepth = rightTriggerButtonIA.ReadValue<float>();
     }
 
     private void UpdateButton(InputAction buttonIA, ref sTButton button)

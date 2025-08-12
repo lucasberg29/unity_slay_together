@@ -62,6 +62,42 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftTrigger"",
+                    ""type"": ""Button"",
+                    ""id"": ""4c63f076-48b4-4955-8c7f-e8b06492342e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftBumper"",
+                    ""type"": ""Button"",
+                    ""id"": ""8f09e1e3-1796-4e05-905a-289d87dee770"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightTrigger"",
+                    ""type"": ""Button"",
+                    ""id"": ""ff09846f-ee31-41c5-a823-92dfbf77a155"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightBumper"",
+                    ""type"": ""Button"",
+                    ""id"": ""5423cf5b-138e-4da7-a41d-1f679abf7547"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -108,6 +144,50 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Restart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4889b0b1-0521-4e02-99b6-46e54d221f97"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftTrigger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""020ba93e-4462-4ff4-8aad-bea65477ed23"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftBumper"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11a34171-9569-47bd-b1e3-deb5d63ad28a"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightTrigger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c5c97a92-8a3a-4f13-933c-75618cd70327"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightBumper"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -120,6 +200,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerMovement_Slash = m_PlayerMovement.FindAction("Slash", throwIfNotFound: true);
         m_PlayerMovement_Special = m_PlayerMovement.FindAction("Special", throwIfNotFound: true);
         m_PlayerMovement_Restart = m_PlayerMovement.FindAction("Restart", throwIfNotFound: true);
+        m_PlayerMovement_LeftTrigger = m_PlayerMovement.FindAction("LeftTrigger", throwIfNotFound: true);
+        m_PlayerMovement_LeftBumper = m_PlayerMovement.FindAction("LeftBumper", throwIfNotFound: true);
+        m_PlayerMovement_RightTrigger = m_PlayerMovement.FindAction("RightTrigger", throwIfNotFound: true);
+        m_PlayerMovement_RightBumper = m_PlayerMovement.FindAction("RightBumper", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -190,6 +274,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_Slash;
     private readonly InputAction m_PlayerMovement_Special;
     private readonly InputAction m_PlayerMovement_Restart;
+    private readonly InputAction m_PlayerMovement_LeftTrigger;
+    private readonly InputAction m_PlayerMovement_LeftBumper;
+    private readonly InputAction m_PlayerMovement_RightTrigger;
+    private readonly InputAction m_PlayerMovement_RightBumper;
     public struct PlayerMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -198,6 +286,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Slash => m_Wrapper.m_PlayerMovement_Slash;
         public InputAction @Special => m_Wrapper.m_PlayerMovement_Special;
         public InputAction @Restart => m_Wrapper.m_PlayerMovement_Restart;
+        public InputAction @LeftTrigger => m_Wrapper.m_PlayerMovement_LeftTrigger;
+        public InputAction @LeftBumper => m_Wrapper.m_PlayerMovement_LeftBumper;
+        public InputAction @RightTrigger => m_Wrapper.m_PlayerMovement_RightTrigger;
+        public InputAction @RightBumper => m_Wrapper.m_PlayerMovement_RightBumper;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -219,6 +311,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Restart.started += instance.OnRestart;
             @Restart.performed += instance.OnRestart;
             @Restart.canceled += instance.OnRestart;
+            @LeftTrigger.started += instance.OnLeftTrigger;
+            @LeftTrigger.performed += instance.OnLeftTrigger;
+            @LeftTrigger.canceled += instance.OnLeftTrigger;
+            @LeftBumper.started += instance.OnLeftBumper;
+            @LeftBumper.performed += instance.OnLeftBumper;
+            @LeftBumper.canceled += instance.OnLeftBumper;
+            @RightTrigger.started += instance.OnRightTrigger;
+            @RightTrigger.performed += instance.OnRightTrigger;
+            @RightTrigger.canceled += instance.OnRightTrigger;
+            @RightBumper.started += instance.OnRightBumper;
+            @RightBumper.performed += instance.OnRightBumper;
+            @RightBumper.canceled += instance.OnRightBumper;
         }
 
         private void UnregisterCallbacks(IPlayerMovementActions instance)
@@ -235,6 +339,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Restart.started -= instance.OnRestart;
             @Restart.performed -= instance.OnRestart;
             @Restart.canceled -= instance.OnRestart;
+            @LeftTrigger.started -= instance.OnLeftTrigger;
+            @LeftTrigger.performed -= instance.OnLeftTrigger;
+            @LeftTrigger.canceled -= instance.OnLeftTrigger;
+            @LeftBumper.started -= instance.OnLeftBumper;
+            @LeftBumper.performed -= instance.OnLeftBumper;
+            @LeftBumper.canceled -= instance.OnLeftBumper;
+            @RightTrigger.started -= instance.OnRightTrigger;
+            @RightTrigger.performed -= instance.OnRightTrigger;
+            @RightTrigger.canceled -= instance.OnRightTrigger;
+            @RightBumper.started -= instance.OnRightBumper;
+            @RightBumper.performed -= instance.OnRightBumper;
+            @RightBumper.canceled -= instance.OnRightBumper;
         }
 
         public void RemoveCallbacks(IPlayerMovementActions instance)
@@ -258,5 +374,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnSlash(InputAction.CallbackContext context);
         void OnSpecial(InputAction.CallbackContext context);
         void OnRestart(InputAction.CallbackContext context);
+        void OnLeftTrigger(InputAction.CallbackContext context);
+        void OnLeftBumper(InputAction.CallbackContext context);
+        void OnRightTrigger(InputAction.CallbackContext context);
+        void OnRightBumper(InputAction.CallbackContext context);
     }
 }
