@@ -24,6 +24,8 @@ public class MenuManager : MonoBehaviour
     public float menuSectionSwitchCooldown = 1.0f;
     private float menuSectionSwitchCooldownTimer = 0.0f;
 
+    public GameObject topOptions;
+
     private void Start()
     {
         currentIndex = 0;
@@ -82,7 +84,41 @@ public class MenuManager : MonoBehaviour
             menuSections[i].SetActive(false);
         }
 
-        menuSections[currentIndex].SetActive(true); 
+        UpdateMenuOption();
+    }
+
+    private void UpdateMenuOption()
+    {
+        menuSections[currentIndex].SetActive(true);
+
+
+        int index = 0;
+        foreach (Transform child in topOptions.transform)
+        {
+            if (index == currentIndex)
+            {
+                foreach (Transform grandChild in child.transform)
+                {
+                    if (grandChild.gameObject.name == "CurrentSelection")
+                    {
+                        grandChild.gameObject.SetActive(true);
+                    }
+                }
+            }
+            else
+            {
+                foreach (Transform grandChild in child.transform)
+                {
+                    if (grandChild.gameObject.name == "CurrentSelection")
+                    {
+                        grandChild.gameObject.SetActive(false);
+                    }
+                }
+            }
+
+            index++;
+        }
+
     }
 
     private void MoveRightInMenu()
@@ -99,7 +135,7 @@ public class MenuManager : MonoBehaviour
             menuSections[i].SetActive(false);
         }
 
-        menuSections[currentIndex].SetActive(true);
+        UpdateMenuOption();
     }
 }
 

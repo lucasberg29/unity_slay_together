@@ -20551,7 +20551,8 @@ MonoBehaviour:
   - {fileID: 655700404}
   - {fileID: 488755823}
   - {fileID: 750373311}
-  menuSectionSwitchCooldown: 0.5
+  menuSectionSwitchCooldown: 0.3
+  topOptions: {fileID: 1818053671}
 --- !u!1001 &1943024391
 PrefabInstance:
   m_ObjectHideFlags: 0
