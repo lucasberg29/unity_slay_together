@@ -10,7 +10,6 @@ public class GateManager : MonoBehaviour
     private bool levelComplete = false;
     public GameObject [] enemies;  
 
-    // Start is called before the first frame update
     void Start()
     {
         gateAnimator = GetComponent<Animator>();

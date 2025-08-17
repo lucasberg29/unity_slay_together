@@ -6240,7 +6240,6 @@ GameObject:
   - component: {fileID: 5501263113604818887}
   - component: {fileID: 1386172063}
   - component: {fileID: 1386172064}
-  - component: {fileID: 5539146410023749664}
   - component: {fileID: 8745389212782741758}
   - component: {fileID: 4402549451853739582}
   - component: {fileID: 1472179241190291436}
@@ -6440,52 +6439,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5539146410023749664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7431442497556048208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 4ffe3729d6016634bba0c54234c1445f, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: b6d7a331-4fdd-4e52-b919-f4c1906e6f7c
-    m_ActionName: 'PlayerMovement/Movement[/XInputControllerWindows/leftStick]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: dc84c93e-1332-4e14-baf0-cad3200cca20
-    m_ActionName: 'PlayerMovement/Slash[/XInputControllerWindows/buttonWest]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 20438786-f6fc-4f81-b84e-0814a493f726
-    m_ActionName: 'PlayerMovement/Special[/XInputControllerWindows/buttonNorth]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 32121f3f-dd79-43ab-95f8-52ff3719a14d
-    m_ActionName: 'PlayerMovement/Restart[/XInputControllerWindows/start]'
-  m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: PlayerMovement
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!195 &8745389212782741758
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6532,3 +6485,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869875651d3d1534caa339f7a64ecd43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heroSpeed: 1

@@ -8,10 +8,13 @@ public class Hero : MonoBehaviour
     public float heroSpeed = 1.0f;
 
     private CharacterController characterController;
+    private Animator animator;
+
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -33,7 +36,7 @@ public class Hero : MonoBehaviour
 
     public void Slash()
     {
-
+        animator.SetBool("IsSlashing", true);
     }
 
     public void Special()

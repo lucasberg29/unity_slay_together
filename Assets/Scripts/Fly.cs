@@ -9,8 +9,6 @@ public class Fly : MonoBehaviour
 
     private Rigidbody rbFlying;
     
-
-    // Start is called before the first frame update
     void Start()
     {
         rbFlying = gameObject.GetComponent<Rigidbody>();
@@ -19,7 +17,6 @@ public class Fly : MonoBehaviour
         Physics.gravity = new Vector3(0.0f, gravity, 0.0f);
     }
 
-    // Update is called once per frame
     void Update()
     {
         
